@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.glassfish.ozark</groupId>
             <artifactId>ozark</artifactId>
-            <version>1.0.0-m03-SNAPSHOT</version>
+            <version>${ozark.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -30,6 +30,7 @@
     </build>
 
     <properties>
+        <ozark.version>1.0.0-m03-SNAPSHOT</ozark.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>

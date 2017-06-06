@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
 import javax.mvc.binding.BindingResult;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
@@ -19,11 +20,15 @@ public class ValitationTestController {
     private BindingResult br;
 
     @Inject
-    Models models;
+    private Models models;
 
     @GET
     @ValidateOnExecution(type = ExecutableType.NONE)
-    public String sayHello(@QueryParam("name") @Size(min = 1) String name) {
+    public String sayHello(@QueryParam("name") @Size(min = 1) @Pattern(regexp = "[A-Z][a-zA-Z]*") String name) {
+        if (br.isFailed()) {
+            this.models.put("bindingResult", br);
+            return "/WEB-INF/jsp/validation.jsp";
+        }
         this.models.put("text", "Hello " + name);
         return "/WEB-INF/jsp/validation.jsp";
     }
