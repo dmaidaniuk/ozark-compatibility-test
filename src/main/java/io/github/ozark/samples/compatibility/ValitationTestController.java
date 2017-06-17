@@ -27,7 +27,7 @@ public class ValitationTestController {
     public String sayHello(@QueryParam("name") @Size(min = 1) @Pattern(regexp = "[A-Z][a-zA-Z]*") String name) {
         if (br.isFailed()) {
             this.models.put("bindingResult", br);
-            return "/WEB-INF/jsp/validation.jsp";
+            return "/WEB-INF/jsp/error.jsp";
         }
         this.models.put("text", "Hello " + name);
         return "/WEB-INF/jsp/validation.jsp";
