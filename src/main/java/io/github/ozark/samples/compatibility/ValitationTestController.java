@@ -6,8 +6,6 @@ import javax.mvc.annotation.Controller;
 import javax.mvc.binding.BindingResult;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import javax.validation.executable.ExecutableType;
-import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -23,7 +21,6 @@ public class ValitationTestController {
     private Models models;
 
     @GET
-    @ValidateOnExecution(type = ExecutableType.NONE)
     public String sayHello(@QueryParam("name") @Size(min = 1) @Pattern(regexp = "[A-Z][a-zA-Z]*") String name) {
         if (br.isFailed()) {
             this.models.put("bindingResult", br);
