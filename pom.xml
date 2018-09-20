@@ -23,6 +23,7 @@
         <payara.username>admin</payara.username>
         <payara.password>glassfish</payara.password>
         <payara.hostname>localhost</payara.hostname>
+        <tomee.plugin.version>1.7.1</tomee.plugin.version>
     </properties>
 
     <dependencies>
@@ -135,6 +136,31 @@
               </dependencies>
             </plugin>
           </plugins>
+        </build>
+      </profile>
+      <profile>
+        <id>tomee-deploy</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.openejb.maven</groupId>
+                    <artifactId>tomee-maven-plugin</artifactId>
+                    <version>${tomee.plugin.version}</version>
+                    <configuration>
+                        <tomeeVersion>${tomee.plugin.version}</tomeeVersion>
+                        <tomeeClassifier>plus</tomeeClassifier>
+                        <path>${project.build.directory}\${project.build.finalName}.war</path>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
         </build>
       </profile>
       <profile>
