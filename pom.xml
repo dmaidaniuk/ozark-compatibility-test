@@ -34,7 +34,7 @@
     </build>
 
     <properties>
-        <ozark.version>1.0.0-m03-SNAPSHOT</ozark.version>
+        <ozark.version>1.0.0-m04-SNAPSHOT</ozark.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -126,5 +126,18 @@
         </build>
       </profile>
     </profiles>
+
+    <repositories>
+        <repository>
+            <id>snapshots-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>

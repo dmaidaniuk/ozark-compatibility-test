@@ -1,8 +1,8 @@
 package io.github.ozark.samples.compatibility;
 
 import javax.inject.Inject;
+import javax.mvc.Controller;
 import javax.mvc.Models;
-import javax.mvc.annotation.Controller;
 import javax.mvc.binding.BindingResult;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
