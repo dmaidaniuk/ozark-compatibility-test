@@ -14,7 +14,7 @@ import javax.ws.rs.QueryParam;
 
 @Controller
 @Path("validation-test")
-public class ValitationTestController {
+public class ValidationTestController {
 
     @Inject
     private BindingResult br;

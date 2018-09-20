@@ -10,6 +10,21 @@
     <packaging>war</packaging>
     <name>Ozark Compatibility Test</name>
 
+    <properties>
+        <ozark.version>1.0.0-m04-SNAPSHOT</ozark.version>
+        <rest-assured.version>3.1.1</rest-assured.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <wildfly.plugin.version>1.1.0.Final</wildfly.plugin.version>
+        <cargo.plugin.version>1.4.17</cargo.plugin.version>
+        <payara.adminPort>4848</payara.adminPort>
+        <payara.username>admin</payara.username>
+        <payara.password>glassfish</payara.password>
+        <payara.hostname>localhost</payara.hostname>
+    </properties>
+
     <dependencies>
       <dependency>
         <groupId>javax.mvc</groupId>
@@ -27,25 +42,22 @@
           <version>7.0</version>
           <scope>provided</scope>
       </dependency>
+      <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>rest-assured</artifactId>
+        <version>${rest-assured.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+      </dependency>
     </dependencies>
 
     <build>
         <finalName>ozark-test</finalName>
     </build>
-
-    <properties>
-        <ozark.version>1.0.0-m04-SNAPSHOT</ozark.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <wildfly.plugin.version>1.1.0.Final</wildfly.plugin.version>
-        <cargo.plugin.version>1.4.17</cargo.plugin.version>
-        <payara.adminPort>4848</payara.adminPort>
-        <payara.username>admin</payara.username>
-        <payara.password>glassfish</payara.password>
-        <payara.hostname>localhost</payara.hostname>
-    </properties>
 
     <profiles>
       <profile>
@@ -124,6 +136,26 @@
             </plugin>
           </plugins>
         </build>
+      </profile>
+      <profile>
+        <id>test</id>
+          <build>
+              <plugins>
+                  <plugin>
+                      <groupId>org.apache.maven.plugins</groupId>
+                      <artifactId>maven-failsafe-plugin</artifactId>
+                      <version>2.22.0</version>
+                      <executions>
+                          <execution>
+                              <goals>
+                                  <goal>integration-test</goal>
+                                  <goal>verify</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
       </profile>
     </profiles>
 
