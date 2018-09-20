@@ -19,6 +19,14 @@ mvn clean install -P payara-deploy
 
 **Note:** by default in Payara built-in user `admin` doesn't have password. To set some password for it use command: `asadmin --user admin change-admin-password`.
 
+# How to test
+
+To test deployed application enter next URL in browser:
+
+```
+http://localhost:8080/ozark-test/
+```
+
 ## Licensing and Copyright
 
 This code is licensed under the  Apache License Version 2.0. Please see LICENSE for licensing and copyright information.
